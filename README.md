@@ -1,9 +1,11 @@
-<html lang="pt-BR">
+<html lang="pt-BR"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alvarez Ar Condicionado</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Importando ícones do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; }
         body {
@@ -103,20 +105,38 @@
             font-size: 1.2rem;
         }
 
-        .contact a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 25px;
-            background-color: #ff6600;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s;
+        /* Container dos botões lado a lado */
+        .contact-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        .contact a:hover {
-            background-color: #e65c00;
+        .contact-buttons a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .contact-buttons a:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
         }
 
         footer {
@@ -125,6 +145,16 @@
             text-align: center;
             padding: 20px;
             font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -137,6 +167,10 @@
             nav a {
                 display: block;
                 margin: 5px 0;
+            }
+            .contact-buttons {
+                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
@@ -170,14 +204,28 @@
 
 <section class="contact" id="contact">
     <h2>Contato</h2>
-    <p>WhatsApp: <a href="https://wa.me/551630136700" target="_blank">+55 16 3013-6700</a></p>
     <p>Horário: Segunda a Sexta, 08:00 às 17:30</p>
-    <a href="https://wa.me/551630136700" target="_blank">Fale conosco no WhatsApp</a>
+
+    <!-- Botões lado a lado -->
+    <div class="contact-buttons">
+        <a href="https://wa.me/551630136700" target="_blank" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://instagram.com/alvarezarcondicionado" target="_blank" class="instagram-btn">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+    </div>
 </section>
 
 <footer>
     &copy; 2025 Alvarez Ar Condicionado. Todos os direitos reservados.
+    <br>
+    <i class="fab fa-whatsapp" style="color:#25D366; margin-right: 5px;"></i>
+    <a href="https://wa.me/551630136700" target="_blank">+55 16 3013-6700</a> | 
+    <i class="fab fa-instagram" style="color:#ff6600; margin-right: 5px; margin-left:10px;"></i>
+    <a href="https://instagram.com/alvarezarcondicionado" target="_blank">@alvarezarcondicionado</a>
 </footer>
 
 </body>
 </html>
+
