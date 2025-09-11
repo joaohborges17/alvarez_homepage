@@ -198,12 +198,14 @@ footer a:hover { text-decoration: underline; }
     100% { background-position: 0% 50%; }
 }
 
-/* Loja em breve (desativada) */
+/* Loja em breve (desativada, azul com borda laranja) */
 .loja-btn-disabled {
-    background-color: #aaa;
+    background-color: #003366; /* Azul da logo */
+    border: 2px solid #ff6600; /* Borda laranja */
     cursor: not-allowed;
-    opacity: 0.7;
+    opacity: 0.85;
     position: relative;
+    box-sizing: border-box;
 }
 .loja-btn-disabled i { color: #fff; }
 
@@ -214,7 +216,7 @@ footer a:hover { text-decoration: underline; }
     bottom: 70px;
     left: 50%;
     transform: translateX(-50%);
-    background: #ff6600;
+    background: #ff6600; /* Laranja */
     color: #fff;
     padding: 6px 10px;
     border-radius: 6px;
@@ -301,17 +303,15 @@ section.visible { opacity: 1; transform: translateY(0); }
     <a href="https://wa.me/551630136700" target="_blank">+55 16 3013-6700</a> | 
     <i class="fab fa-instagram" style="color:#ff6600; margin-left:10px; margin-right:5px;"></i>
     <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">@alvaresarcondicionado</a>
-    <br><br>
-    <span style="color:#ff6600; font-size:0.95rem; font-weight:bold;">
-        🛒 Loja Online disponível em breve
-    </span>
+    <br>
+    <span style="color:#ff6600; font-weight:bold;">Loja Online: Em breve!</span>
 </footer>
 
 <!-- Botões flutuantes -->
 <div class="floating-buttons" id="floating-buttons">
     <a href="https://wa.me/551630136700" target="_blank" class="floating-btn whatsapp-btn-floating" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="floating-btn instagram-btn-floating" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <div class="floating-btn loja-btn-disabled" aria-label="Loja Online - Em breve" data-title="🛒 Loja Online disponível em breve"><i class="fas fa-store"></i></div>
+    <a class="floating-btn loja-btn-disabled" data-title="Em breve!" aria-label="Loja"><i class="fas fa-store"></i></a>
 </div>
 
 <script>
@@ -341,3 +341,4 @@ window.addEventListener('load', () => { document.getElementById('floating-button
 
 </body>
 </html>
+
