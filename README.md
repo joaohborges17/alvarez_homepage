@@ -1,4 +1,4 @@
-<html lang="pt-BR"> 
+<html lang="pt-BR">  
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,7 +105,6 @@
             font-size: 1.2rem;
         }
 
-        /* Container dos botões lado a lado */
         .contact-buttons {
             margin-top: 20px;
             display: flex;
@@ -206,12 +205,11 @@
     <h2>Contato</h2>
     <p>Horário: Segunda a Sexta, 08:00 às 17:30</p>
 
-    <!-- Botões lado a lado -->
     <div class="contact-buttons">
         <a href="https://wa.me/551630136700" target="_blank" class="whatsapp-btn">
             <i class="fab fa-whatsapp"></i> WhatsApp
         </a>
-        <a href="https://instagram.com/alvarezarcondicionado" target="_blank" class="instagram-btn">
+        <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="instagram-btn">
             <i class="fab fa-instagram"></i> Instagram
         </a>
     </div>
@@ -223,9 +221,8 @@
     <i class="fab fa-whatsapp" style="color:#25D366; margin-right: 5px;"></i>
     <a href="https://wa.me/551630136700" target="_blank">+55 16 3013-6700</a> | 
     <i class="fab fa-instagram" style="color:#ff6600; margin-right: 5px; margin-left:10px;"></i>
-    <a href="https://instagram.com/alvarezarcondicionado" target="_blank">@alvarezarcondicionado</a>
+    <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">@alvaresarcondicionado</a>
 </footer>
 
 </body>
 </html>
-
