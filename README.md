@@ -4,235 +4,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alvares Ar Condicionado</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Importando ícones do Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        * { box-sizing: border-box; }
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f4f4f4;
             color: #333;
         }
-
         header {
-            background-color: #003366;
+            background: #004aad;
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-
         header img {
-            max-height: 80px;
-            margin-bottom: 10px;
+            height: 60px;
         }
-
         nav a {
             color: white;
+            margin-left: 20px;
             text-decoration: none;
-            margin: 0 15px;
             font-weight: bold;
         }
-
         nav a:hover {
             text-decoration: underline;
         }
-
         .hero {
+            background: url('arcondicionado.jpg') no-repeat center center/cover;
+            height: 400px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 80px 20px;
-            background: linear-gradient(90deg, #003366, #ff6600);
             color: white;
             text-align: center;
         }
-
         .hero h1 {
-            font-size: 3rem;
-            margin: 0 0 10px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-        }
-
-        .services {
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .services h2 {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            color: #003366;
-        }
-
-        .services ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .services li {
-            background-color: white;
-            margin: 15px auto;
-            padding: 25px;
-            max-width: 600px;
+            font-size: 3em;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            font-size: 1.1rem;
-            transition: transform 0.3s;
         }
-
-        .services li:hover {
-            transform: translateY(-5px);
+        section {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
         }
-
-        .contact {
-            background-color: #003366;
-            color: white;
-            padding: 50px 20px;
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .service-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             text-align: center;
         }
-
-        .contact h2 {
-            margin-bottom: 20px;
-            font-size: 2rem;
+        .service-card h3 {
+            margin-top: 0;
+            color: #004aad;
         }
-
-        .contact p {
-            font-size: 1.2rem;
-        }
-
-        .contact-buttons {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .contact-buttons a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: bold;
-            text-decoration: none;
-            color: white;
-            transition: transform 0.2s, opacity 0.2s;
-        }
-
-        .contact-buttons a:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
-
-        .whatsapp-btn {
-            background-color: #25D366;
-        }
-
-        .instagram-btn {
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            background-size: 400% 400%;
-            animation: gradientAnimation 8s ease infinite;
-            color: white;
-        }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         footer {
-            background-color: #002244;
+            background: #004aad;
             color: white;
             text-align: center;
             padding: 20px;
-            font-size: 0.9rem;
         }
-
         footer a {
-            color: #ff6600;
+            color: #ffd700;
             text-decoration: none;
-            font-weight: bold;
         }
-
         footer a:hover {
             text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            nav a {
-                display: block;
-                margin: 5px 0;
-            }
-            .contact-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
         }
     </style>
 </head>
 <body>
 
-<header>
-     <img src="logo_alvarez2.png.jpg" alt="Alvares Ar Condicionado Logo">
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#services">Serviços</a>
-        <a href="#contact">Contato</a>
-    </nav>
-</header>
+    <header>
+        <img src="logo_alvarez.png" alt="Alvares Ar Condicionado Logo">
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#services">Serviços</a>
+            <a href="#contact">Contato</a>
+        </nav>
+    </header>
 
-<section class="hero" id="home">
-    <h1>Alvares Ar Condicionado</h1>
-    <p>Venda, Instalação, Manutenção e Assistência</p>
-    <p>Sempre com você</p>
-</section>
+    <section class="hero" id="home">
+        <h1>Conforto e Qualidade em Climatização</h1>
+    </section>
 
-<section class="services" id="services">
-    <h2>Nossos Serviços</h2>
-    <ul>
-        <li>Venda de aparelhos de ar condicionado</li>
-        <li>Instalação profissional</li>
-        <li><a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" style="text-decoration:none; color:#003366;">Manutenção preventiva e corretiva</a></li>
-        <li>Assistência técnica especializada</li>
-    </ul>
-</section>
+    <section id="services">
+        <h2>Serviços</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3>Instalação</h3>
+                <p>Realizamos instalação profissional de ar-condicionado para residências e empresas.</p>
+            </div>
+            <div class="service-card">
+                <h3>Manutenção Corretiva</h3>
+                <p>Consertos e reparos rápidos para garantir o funcionamento do seu equipamento.</p>
+            </div>
+            <div class="service-card">
+                <h3>Manutenção Preventiva</h3>
+                <p>Evite problemas futuros! Agende sua manutenção preventiva diretamente pelo nosso 
+                   <a href="https://www.instagram.com/alvarezarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">Instagram</a>.
+                </p>
+            </div>
+        </div>
+    </section>
 
-<section class="contact" id="contact">
-    <h2>Contato</h2>
-    <p>Horário: Segunda a Sexta, 08:00 às 17:30</p>
+    <section id="contact">
+        <h2>Contato</h2>
+        <p>Entre em contato pelo nosso WhatsApp ou visite nosso 
+           <a href="https://www.instagram.com/alvarezarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">Instagram</a>.
+        </p>
+    </section>
 
-    <div class="contact-buttons">
-        <a href="https://wa.me/551630136700" target="_blank" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
-        <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="instagram-btn">
-            <i class="fab fa-instagram"></i> Instagram
-        </a>
-    </div>
-</section>
-
-<footer>
-    &copy; 2025 Alvares Ar Condicionado. Todos os direitos reservados.
-    <br>
-    <i class="fab fa-whatsapp" style="color:#25D366; margin-right: 5px;"></i>
-    <a href="https://wa.me/551630136700" target="_blank">+55 16 3013-6700</a> | 
-    <i class="fab fa-instagram" style="color:#ff6600; margin-right: 5px; margin-left:10px;"></i>
-    <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">@alvaresarcondicionado</a>
-</footer>
+    <footer>
+        <p>&copy; 2025 Alvares Ar Condicionado - Todos os direitos reservados</p>
+    </footer>
 
 </body>
 </html>
-
