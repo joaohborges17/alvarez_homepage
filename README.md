@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alvarez Ar Condicionado</title>
+    <title>Alvares Ar Condicionado</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Importando ícones do Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -136,6 +136,15 @@
 
         .instagram-btn {
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s ease infinite;
+            color: white;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         footer {
@@ -177,7 +186,7 @@
 <body>
 
 <header>
-     <img src="logo_alvarez.png" alt="Alvares Ar Condicionado Logo">
+     <img src="logo_alvarez2.png.jpg" alt="Alvares Ar Condicionado Logo">
     <nav>
         <a href="#home">Home</a>
         <a href="#services">Serviços</a>
@@ -186,7 +195,7 @@
 </header>
 
 <section class="hero" id="home">
-    <h1>Alvarez Ar Condicionado</h1>
+    <h1>Alvares Ar Condicionado</h1>
     <p>Venda, Instalação, Manutenção e Assistência</p>
     <p>Sempre com você</p>
 </section>
@@ -196,7 +205,7 @@
     <ul>
         <li>Venda de aparelhos de ar condicionado</li>
         <li>Instalação profissional</li>
-        <li>Manutenção preventiva e corretiva</li>
+        <li><a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" style="text-decoration:none; color:#003366;">Manutenção preventiva e corretiva</a></li>
         <li>Assistência técnica especializada</li>
     </ul>
 </section>
@@ -216,7 +225,7 @@
 </section>
 
 <footer>
-    &copy; 2025 Alvarez Ar Condicionado. Todos os direitos reservados.
+    &copy; 2025 Alvares Ar Condicionado. Todos os direitos reservados.
     <br>
     <i class="fab fa-whatsapp" style="color:#25D366; margin-right: 5px;"></i>
     <a href="https://wa.me/551630136700" target="_blank">+55 16 3013-6700</a> | 
@@ -226,3 +235,4 @@
 
 </body>
 </html>
+
