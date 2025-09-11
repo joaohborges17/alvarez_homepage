@@ -1,132 +1,261 @@
-<html lang="pt-BR">  
+<html lang="pt-BR"> 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alvares Ar Condicionado</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background: #004aad;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        header img {
-            height: 60px;
-        }
-        nav a {
-            color: white;
-            margin-left: 20px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .hero {
-            background: url('arcondicionado.jpg') no-repeat center center/cover;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 3em;
-            background: rgba(0,0,0,0.5);
-            padding: 10px 20px;
-            border-radius: 10px;
-        }
-        section {
-            padding: 40px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .service-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .service-card h3 {
-            margin-top: 0;
-            color: #004aad;
-        }
-        footer {
-            background: #004aad;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        footer a {
-            color: #ffd700;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alvares Ar Condicionado</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+    body { font-family: 'Roboto', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+
+    header {
+        background-color: #003366;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    header img { max-height: 80px; margin-bottom: 10px; }
+    nav a { color: white; font-weight: bold; margin: 0 15px; transition: color 0.3s; }
+    nav a:hover { text-decoration: underline; color: #ffcc00; }
+
+    section { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    section.visible { opacity: 1; transform: translateY(0); }
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 20px;
+        background: linear-gradient(90deg, #003366, #ff6600);
+        color: white;
+        text-align: center;
+    }
+    .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+    .hero p { font-size: 1.2rem; }
+
+    .services {
+        padding: 50px 20px;
+        text-align: center;
+    }
+    .services h2 { font-size: 2.2rem; margin-bottom: 30px; color: #003366; }
+    .services ul { list-style: none; padding: 0; }
+    .services li {
+        background-color: white;
+        margin: 15px auto;
+        padding: 25px;
+        max-width: 600px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        font-size: 1.1rem;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .services li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+    .services li a { color: #003366; font-weight: bold; }
+
+    .contact {
+        background-color: #003366;
+        color: white;
+        padding: 50px 20px;
+        text-align: center;
+    }
+    .contact h2 { font-size: 2rem; margin-bottom: 20px; }
+    .contact p { font-size: 1.2rem; margin-bottom: 10px; }
+    .contact-buttons {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    .contact-buttons a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+        transition: transform 0.2s, opacity 0.2s;
+    }
+    .contact-buttons a:hover { transform: scale(1.05); opacity: 0.9; }
+    .whatsapp-btn { background-color: #25D366; }
+    .instagram-btn {
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        background-size: 400% 400%;
+        animation: gradientAnimation 8s ease infinite;
+        color: white;
+    }
+    @keyframes gradientAnimation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    .map-container {
+        margin-top: 30px;
+        max-width: 600px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    footer {
+        background-color: #002244;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 0.9rem;
+    }
+    footer a { color: #ff6600; font-weight: bold; }
+    footer a:hover { text-decoration: underline; }
+
+    /* Botões flutuantes */
+    .floating-buttons {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        z-index: 1000;
+    }
+    .whatsapp-btn-floating {
+        width: 50px;
+        height: 50px;
+        background-color: #25D366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: transform 0.2s, background 0.3s;
+    }
+    .whatsapp-btn-floating:hover {
+        transform: scale(1.1);
+        background-color: #1ebe57;
+    }
+    .instagram-btn-floating {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        background-size: 400% 400%;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        animation: gradientAnimation 8s ease infinite;
+        transition: transform 0.2s;
+    }
+    .instagram-btn-floating:hover {
+        transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 { font-size: 2rem; }
+        .hero p { font-size: 1rem; }
+        nav a { display: block; margin: 5px 0; }
+        .contact-buttons { flex-direction: column; gap: 15px; }
+    }
+</style>
 </head>
 <body>
 
-    <header>
-        <img src="logo_alvarez.png" alt="Alvares Ar Condicionado Logo">
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#services">Serviços</a>
-            <a href="#contact">Contato</a>
-        </nav>
-    </header>
+<header>
+    <img src="nova_logojpeg" alt="Alvares Ar Condicionado Logo">
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#services">Serviços</a>
+        <a href="#contact">Contato</a>
+    </nav>
+</header>
 
-    <section class="hero" id="home">
-        <h1>Conforto e Qualidade em Climatização</h1>
-    </section>
+<section class="hero" id="home">
+    <h1>Alvares Ar Condicionado</h1>
+    <p>Venda, Instalação, Manutenção e Assistência</p>
+    <p>Sempre com você</p>
+</section>
 
-    <section id="services">
-        <h2>Serviços</h2>
-        <div class="services">
-            <div class="service-card">
-                <h3>Instalação</h3>
-                <p>Realizamos instalação profissional de ar-condicionado para residências e empresas.</p>
-            </div>
-            <div class="service-card">
-                <h3>Manutenção Corretiva</h3>
-                <p>Consertos e reparos rápidos para garantir o funcionamento do seu equipamento.</p>
-            </div>
-            <div class="service-card">
-                <h3>Manutenção Preventiva</h3>
-                <p>Evite problemas futuros! Agende sua manutenção preventiva diretamente pelo nosso 
-                   <a href="https://www.instagram.com/alvarezarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">Instagram</a>.
-                </p>
-            </div>
-        </div>
-    </section>
+<section class="services" id="services">
+    <h2>Nossos Serviços</h2>
+    <ul>
+        <li>Venda de aparelhos de ar condicionado</li>
+        <li>Instalação profissional</li>
+        <li><a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">Manutenção preventiva e corretiva</a></li>
+        <li>Assistência técnica especializada</li>
+    </ul>
+</section>
 
-    <section id="contact">
-        <h2>Contato</h2>
-        <p>Entre em contato pelo nosso WhatsApp ou visite nosso 
-           <a href="https://www.instagram.com/alvarezarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">Instagram</a>.
-        </p>
-    </section>
+<section class="contact" id="contact">
+    <h2>Contato</h2>
+    <p>Horário: Segunda a Sexta, 08:00 às 17:30</p>
 
-    <footer>
-        <p>&copy; 2025 Alvares Ar Condicionado - Todos os direitos reservados</p>
-    </footer>
+    <div class="contact-buttons">
+        <a href="https://wa.me/551630136700" target="_blank" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="instagram-btn">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+    </div>
+
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.434603734647!2d-47.82334468445166!3d-21.21792318590764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x949320d6e6d36d9f%3A0x7e16e92e682d0d42!2sR.%20Genoveva%20On%C3%B3fre%20Barban%2C%20657%20-%20Planalto%20Verde%2C%20Ribeir%C3%A3o%20Preto%20-%20SP%2C%2014056-340!5e0!3m2!1spt-BR!2sbr!4v1694440000000!5m2!1spt-BR!2sbr"
+            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
+
+<footer>
+    &copy; 2025 Alvares Ar Condicionado. Todos os direitos reservados.
+    <br>
+    <i class="fab fa-whatsapp" style="color:#25D366; margin-right:5px;"></i>
+    <a href="https://wa.me/551630136700" target="_blank">+55 16 3013-6700</a> | 
+    <i class="fab fa-instagram" style="color:#ff6600; margin-left:10px; margin-right:5px;"></i>
+    <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">@alvaresarcondicionado</a>
+</footer>
+
+<!-- Botões flutuantes -->
+<div class="floating-buttons">
+    <a href="https://wa.me/551630136700" target="_blank" class="whatsapp-btn-floating">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="instagram-btn-floating">
+        <i class="fab fa-instagram"></i>
+    </a>
+</div>
+
+<script>
+// Fade-in das seções ao rolar
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.2 });
+
+sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
+
