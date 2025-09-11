@@ -178,7 +178,7 @@
 <body>
 
 <header>
-    <img src="nova_logojpeg" alt="Alvares Ar Condicionado Logo">
+    <img src="logo_alvarez.png" alt="Alvares Ar Condicionado Logo">
     <nav>
         <a href="#home">Home</a>
         <a href="#services">Serviços</a>
