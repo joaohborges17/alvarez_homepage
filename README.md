@@ -198,6 +198,35 @@ footer a:hover { text-decoration: underline; }
     100% { background-position: 0% 50%; }
 }
 
+/* Loja em breve (desativada) */
+.loja-btn-disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+    opacity: 0.7;
+    position: relative;
+}
+.loja-btn-disabled i { color: #fff; }
+
+/* Tooltip customizado em laranja */
+.loja-btn-disabled::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff6600;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.loja-btn-disabled:hover::after { opacity: 1; }
+
 /* Fade-in seções */
 section { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
 section.visible { opacity: 1; transform: translateY(0); }
@@ -272,12 +301,17 @@ section.visible { opacity: 1; transform: translateY(0); }
     <a href="https://wa.me/551630136700" target="_blank">+55 16 3013-6700</a> | 
     <i class="fab fa-instagram" style="color:#ff6600; margin-left:10px; margin-right:5px;"></i>
     <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">@alvaresarcondicionado</a>
+    <br><br>
+    <span style="color:#ff6600; font-size:0.95rem; font-weight:bold;">
+        🛒 Loja Online disponível em breve
+    </span>
 </footer>
 
 <!-- Botões flutuantes -->
 <div class="floating-buttons" id="floating-buttons">
     <a href="https://wa.me/551630136700" target="_blank" class="floating-btn whatsapp-btn-floating" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="floating-btn instagram-btn-floating" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <div class="floating-btn loja-btn-disabled" aria-label="Loja Online - Em breve" data-title="🛒 Loja Online disponível em breve"><i class="fas fa-store"></i></div>
 </div>
 
 <script>
