@@ -67,7 +67,37 @@ footer a:hover { text-decoration: underline; }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 .whatsapp-btn-floating { background-color: #25D366; }
 .instagram-btn-floating { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); background-size: 400% 400%; animation: gradientAnimation 8s ease infinite; }
+
+/* Loja em breve */
+.loja-btn-disabled {
+    background-color: #999;
+    cursor: not-allowed;
+    position: relative;
+    animation: pulseDisabled 2s infinite;
+}
+.loja-btn-disabled:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: 70px;
+    right: 50%;
+    transform: translateX(50%);
+    background-color: #333;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+@keyframes pulseDisabled {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
 @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
 /* Formulário WhatsApp */
 #whatsapp-form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 30px auto 0; }
 #whatsapp-form input, #whatsapp-form textarea { padding: 12px; border-radius: 8px; border: none; width: 100%; font-size: 1rem; }
