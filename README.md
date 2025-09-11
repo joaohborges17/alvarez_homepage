@@ -5,6 +5,7 @@
 <title>Alvares Ar Condicionado</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta name="description" content="Alvares Ar Condicionado - Venda, instalação e manutenção de aparelhos de ar condicionado em Ribeirão Preto.">
 <style>
 :root {
     --primary-color: #003366;
@@ -54,13 +55,20 @@ nav a:hover { color: var(--secondary-color); text-decoration: underline; }
     position: relative;
 }
 .hero h1 { font-size: 3rem; margin-bottom: 10px; text-shadow: 1px 1px 6px rgba(0,0,0,0.4); }
-.hero p { font-size: 1.3rem; margin-bottom: 5px; text-shadow: 1px 1px 4px rgba(0,0,0,0.3); }
+.hero p { font-size: 1.3rem; margin-bottom: 10px; text-shadow: 1px 1px 4px rgba(0,0,0,0.3); }
+.cta-btn {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.cta-btn:hover { transform: scale(1.05); opacity: 0.9; }
 
 /* Serviços */
-.services {
-    padding: 60px 20px;
-    text-align: center;
-}
+.services { padding: 60px 20px; text-align: center; }
 .services h2 { font-size: 2.5rem; margin-bottom: 40px; color: var(--primary-color); }
 .services .cards {
     display: grid;
@@ -80,20 +88,11 @@ nav a:hover { color: var(--secondary-color); text-decoration: underline; }
     text-align: center;
     position: relative;
 }
-.services .card i {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: var(--secondary-color);
-    transition: transform 0.4s;
-}
-.services .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-.services .card:hover i {
-    transform: rotate(20deg) scale(1.2);
-}
+.services .card i { font-size: 2.5rem; margin-bottom: 15px; color: var(--secondary-color); transition: transform 0.4s; }
+.services .card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+.services .card:hover i { transform: rotate(20deg) scale(1.2); }
 .services .card a { color: var(--primary-color); font-weight: bold; }
+.services .card p { font-size: 0.9rem; margin-top: 5px; color: #555; }
 
 /* Contato */
 .contact {
@@ -104,13 +103,7 @@ nav a:hover { color: var(--secondary-color); text-decoration: underline; }
 }
 .contact h2 { font-size: 2.2rem; margin-bottom: 20px; }
 .contact p { font-size: 1.2rem; margin-bottom: 10px; }
-.contact-buttons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+.contact-buttons { margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 .contact-buttons a {
     display: flex;
     align-items: center;
@@ -122,7 +115,7 @@ nav a:hover { color: var(--secondary-color); text-decoration: underline; }
     color: var(--white);
     transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s;
 }
-.contact-buttons a:hover { transform: scale(1.08); opacity: 0.9; box-shadow: 0 6px 15px rgba(0,0,0,0.2);}
+.contact-buttons a:hover { transform: scale(1.08); opacity: 0.9; box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
 .whatsapp-btn { background-color: var(--whatsapp-color); }
 .instagram-btn {
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
@@ -200,23 +193,21 @@ footer a:hover { text-decoration: underline; }
 
 /* Loja em breve (desativada, azul com borda laranja) */
 .loja-btn-disabled {
-    background-color: #003366; /* Azul da logo */
-    border: 2px solid #ff6600; /* Borda laranja */
+    background-color: #003366;
+    border: 2px solid #ff6600;
     cursor: not-allowed;
     opacity: 0.85;
     position: relative;
     box-sizing: border-box;
 }
 .loja-btn-disabled i { color: #fff; }
-
-/* Tooltip customizado em laranja */
 .loja-btn-disabled::after {
     content: attr(data-title);
     position: absolute;
     bottom: 70px;
     left: 50%;
     transform: translateX(-50%);
-    background: #ff6600; /* Laranja */
+    background: #ff6600;
     color: #fff;
     padding: 6px 10px;
     border-radius: 6px;
@@ -271,15 +262,16 @@ section.visible { opacity: 1; transform: translateY(0); }
     <h1>Alvares Ar Condicionado</h1>
     <p>Venda, Instalação, Manutenção e Assistência</p>
     <p>Sempre com você</p>
+    <a href="https://wa.me/551630136700" target="_blank" class="cta-btn">Solicite seu Orçamento</a>
 </section>
 
 <section class="services" id="services">
     <h2>Nossos Serviços</h2>
     <div class="cards">
-        <div class="card"><i class="fas fa-snowflake"></i> Venda de aparelhos de ar condicionado</div>
-        <div class="card"><i class="fas fa-tools"></i> Instalação profissional</div>
-        <div class="card"><i class="fas fa-cogs"></i> <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">Manutenção preventiva e corretiva</a></div>
-        <div class="card"><i class="fas fa-headset"></i> Assistência técnica especializada</div>
+        <div class="card"><i class="fas fa-snowflake"></i> Venda de aparelhos de ar condicionado<p>Modelos residenciais e comerciais.</p></div>
+        <div class="card"><i class="fas fa-tools"></i> Instalação profissional<p>Equipe qualificada para montagem rápida e segura.</p></div>
+        <div class="card"><i class="fas fa-cogs"></i> <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">Manutenção preventiva e corretiva</a><p>Garantia de funcionamento eficiente.</p></div>
+        <div class="card"><i class="fas fa-headset"></i> Assistência técnica especializada<p>Suporte rápido e confiável.</p></div>
     </div>
 </section>
 
@@ -317,16 +309,11 @@ section.visible { opacity: 1; transform: translateY(0); }
 <script>
 // Header scroll
 const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-    if(window.scrollY > 50){ header.classList.add('scrolled'); }
-    else { header.classList.remove('scrolled'); }
-});
+window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 50); });
 
 // Fade-in seções
 const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
-}, { threshold: 0.2 });
+const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); } }); }, { threshold: 0.2 });
 sections.forEach(section => observer.observe(section));
 
 // Menu mobile toggle
