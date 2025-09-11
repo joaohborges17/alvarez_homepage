@@ -125,7 +125,7 @@ nav a:hover { color: var(--secondary-color); text-decoration: underline; }
 .contact-buttons a:hover { transform: scale(1.08); opacity: 0.9; box-shadow: 0 6px 15px rgba(0,0,0,0.2);}
 .whatsapp-btn { background-color: var(--whatsapp-color); }
 .instagram-btn {
-    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
     background-size: 400% 400%;
     animation: gradientAnimation 8s ease infinite;
     color: var(--white);
@@ -168,6 +168,7 @@ footer a:hover { text-decoration: underline; }
     transition: all 0.6s ease;
 }
 .floating-buttons.show { opacity: 1; transform: translateY(0); }
+
 .floating-btn {
     width: 55px;
     height: 55px;
@@ -175,7 +176,7 @@ footer a:hover { text-decoration: underline; }
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--white);
+    color: #fff;
     font-size: 26px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -183,6 +184,19 @@ footer a:hover { text-decoration: underline; }
 }
 .floating-btn:hover { transform: scale(1.15); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+/* Cores oficiais */
+.whatsapp-btn-floating { background-color: #25D366; }
+.instagram-btn-floating {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background-size: 400% 400%;
+    animation: gradientAnimation 8s ease infinite;
+}
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 /* Fade-in seções */
 section { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
@@ -246,7 +260,7 @@ section.visible { opacity: 1; transform: translateY(0); }
         <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="instagram-btn"><i class="fab fa-instagram"></i> Instagram</a>
     </div>
     <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.434603734647!2d-47.82334468445166!3d-21.21792318590764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x949320d6e6d36d9f%3A0x7e16e92e682d0d42!2sR.%20Genoveva%20On%C3%B3fre%20Barban%2C%20657%20-%20Planalto%20Verde%2C%20Ribeir%C3%A3o%20Preto%20-%20SP%2C%2014056-340!5e0!3m2!1spt-BR!2sbr!4v1694440000000!5m2!1spt-BR!2sbr" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.434603734647!2d-47.82334468445166!3d-21.21792318590764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x949320d6e6d36d9f%3A0x7e16e92e682d0d42!2sR.%20Genoveva%20On%C3%B3fre%20Barban%2C%20657%20-%20Planalto%20Verde%2C%20Ribeir%C3%A3o%20Preto%20-%20SP%2C%2014056-340!5e0!3m2!1spt-BR!2sbr!4v1694440000000!5m2!1spt-BR!2sbr" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 </section>
 </main>
@@ -254,12 +268,13 @@ section.visible { opacity: 1; transform: translateY(0); }
 <footer>
     &copy; 2025 Alvares Ar Condicionado. Todos os direitos reservados.
     <br>
-    <i class="fab fa-whatsapp" style="color:var(--whatsapp-color); margin-right:5px;"></i>
-    <a href="https://wa.me/551630136700" target="_blank" rel="noopener noreferrer">+55 16 3013-6700</a> | 
-    <i class="fab fa-instagram" style="color:var(--secondary-color); margin-left:10px; margin-right:5px;"></i>
-    <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" rel="noopener noreferrer">@alvaresarcondicionado</a>
+    <i class="fab fa-whatsapp" style="color:#25D366; margin-right:5px;"></i>
+    <a href="https://wa.me/551630136700" target="_blank">+55 16 3013-6700</a> | 
+    <i class="fab fa-instagram" style="color:#ff6600; margin-left:10px; margin-right:5px;"></i>
+    <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank">@alvaresarcondicionado</a>
 </footer>
 
+<!-- Botões flutuantes -->
 <div class="floating-buttons" id="floating-buttons">
     <a href="https://wa.me/551630136700" target="_blank" class="floating-btn whatsapp-btn-floating" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="floating-btn instagram-btn-floating" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -273,12 +288,10 @@ window.addEventListener('scroll', () => {
     else { header.classList.remove('scrolled'); }
 });
 
-// Fade-in das seções
+// Fade-in seções
 const sections = document.querySelectorAll('section');
 const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){ entry.target.classList.add('visible'); }
-    });
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
 }, { threshold: 0.2 });
 sections.forEach(section => observer.observe(section));
 
@@ -289,9 +302,8 @@ toggleBtn.addEventListener('click', () => { mobileNav.classList.toggle('active')
 document.querySelectorAll('header nav a').forEach(link => link.addEventListener('click', () => mobileNav.classList.remove('active')));
 
 // Mostrar botões flutuantes
-window.addEventListener('load', () => {
-    document.getElementById('floating-buttons').classList.add('show');
-});
+window.addEventListener('load', () => { document.getElementById('floating-buttons').classList.add('show'); });
 </script>
+
 </body>
 </html>
