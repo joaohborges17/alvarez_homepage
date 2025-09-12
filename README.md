@@ -53,12 +53,29 @@ nav a:hover { color: var(--secondary-color); text-decoration: underline; }
 .contact-buttons a:hover { transform: scale(1.08); opacity: 0.9; box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
 .whatsapp-btn { background-color: var(--whatsapp-color); }
 .instagram-btn { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); background-size: 400% 400%; animation: gradientAnimation 8s ease infinite; color: var(--white); }
+
+/* Mapa + formulário lado a lado */
+.contact-flex {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+.contact-flex .map-container,
+.contact-flex form {
+    flex: 1 1 400px;
+    max-width: 500px;
+}
 /* Map */
-.map-container { margin-top: 40px; max-width: 700px; width: 100%; margin-left: auto; margin-right: auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.map-container { width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
 /* Footer */
 footer { background-color: #002244; color: var(--white); text-align: center; padding: 25px 20px; font-size: 0.95rem; }
 footer a { color: var(--secondary-color); font-weight: bold; }
 footer a:hover { text-decoration: underline; }
+
 /* Botões flutuantes */
 .floating-buttons { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 18px; z-index: 1000; opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
 .floating-buttons.show { opacity: 1; transform: translateY(0); }
@@ -99,14 +116,29 @@ footer a:hover { text-decoration: underline; }
 @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
 /* Formulário WhatsApp */
-#whatsapp-form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 30px auto 0; }
+#whatsapp-form { display: flex; flex-direction: column; gap: 15px; }
 #whatsapp-form input, #whatsapp-form textarea { padding: 12px; border-radius: 8px; border: none; width: 100%; font-size: 1rem; }
 #whatsapp-form textarea { resize: vertical; min-height: 80px; }
 #whatsapp-form button { background-color: var(--whatsapp-color); color: #fff; padding: 14px; font-weight: bold; border: none; border-radius: 10px; cursor: pointer; transition: transform 0.3s, opacity 0.3s; }
 #whatsapp-form button:hover { transform: scale(1.05); opacity: 0.9; }
+
 /* Responsividade */
-@media (max-width: 768px) { .hero h1 { font-size: 2rem; } .hero p { font-size: 1rem; } nav { display: none; flex-direction: column; text-align: center; gap: 10px; } nav.active { display: flex; } #menu-toggle { display: block; } .services .card { max-width: 95%; font-size: 1rem; } .contact-buttons { flex-direction: column; gap: 15px; } .map-container { width: 95%; height: 300px; } }
-@media (max-width: 480px) { .hero { padding: 80px 10px; } .hero h1 { font-size: 1.6rem; } .hero p { font-size: 0.9rem; } .contact h2 { font-size: 1.4rem; } .map-container { height: 250px; } .floating-btn { width: 45px; height: 45px; font-size: 22px; } }
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1rem; }
+    nav { display: none; flex-direction: column; text-align: center; gap: 10px; }
+    nav.active { display: flex; }
+    #menu-toggle { display: block; }
+    .services .card { max-width: 95%; font-size: 1rem; }
+    .contact-buttons { flex-direction: column; gap: 15px; }
+}
+@media (max-width: 480px) {
+    .hero { padding: 80px 10px; }
+    .hero h1 { font-size: 1.6rem; }
+    .hero p { font-size: 0.9rem; }
+    .contact h2 { font-size: 1.4rem; }
+    .floating-btn { width: 45px; height: 45px; font-size: 22px; }
+}
 </style>
 </head>
 <body>
@@ -146,17 +178,22 @@ footer a:hover { text-decoration: underline; }
         <a href="https://wa.me/551630136700" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="instagram-btn"><i class="fab fa-instagram"></i> Instagram</a>
     </div>
-    <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.434603734647!2d-47.82334468445166!3d-21.21792318590764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x949320d6e6d36d9f%3A0x7e16e92e682d0d42!2sR.%20Genoveva%20On%C3%B3fre%20Barban%2C%20657%20-%20Planalto%20Verde%2C%20Ribeir%C3%A3o%20Preto%20-%20SP%2C%2014056-340!5e0!3m2!1spt-BR!2sbr!4v1694440000000!5m2!1spt-BR!2sbr" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
 
-    <!-- Formulário WhatsApp -->
-    <form id="whatsapp-form">
-        <input type="text" id="name" placeholder="Seu nome" required>
-        <input type="tel" id="phone" placeholder="Seu telefone" required>
-        <textarea id="message" placeholder="Sua mensagem" required></textarea>
-        <button type="submit" class="cta-btn">Enviar via WhatsApp</button>
-    </form>
+    <!-- Mapa + Formulário lado a lado -->
+    <div class="contact-flex">
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.434603734647!2d-47.82334468445166!3d-21.21792318590764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x949320d6e6d36d9f%3A0x7e16e92e682d0d42!2sR.%20Genoveva%20On%C3%B3fre%20Barban%2C%20657%20-%20Planalto%20Verde%2C%20Ribeir%C3%A3o%20Preto%20-%20SP%2C%2014056-340!5e0!3m2!1spt-BR!2sbr!4v1694440000000!5m2!1spt-BR!2sbr" 
+                width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <!-- Formulário WhatsApp -->
+        <form id="whatsapp-form">
+            <input type="text" id="name" placeholder="Seu nome" required>
+            <input type="tel" id="phone" placeholder="Seu telefone" required>
+            <textarea id="message" placeholder="Sua mensagem" required></textarea>
+            <button type="submit" class="cta-btn">Enviar via WhatsApp</button>
+        </form>
+    </div>
 </section>
 </main>
 
@@ -183,11 +220,6 @@ footer a:hover { text-decoration: underline; }
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 50); });
 
-// Fade-in seções
-const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); } }); }, { threshold: 0.2 });
-sections.forEach(section => observer.observe(section));
-
 // Menu mobile toggle
 const toggleBtn = document.getElementById('menu-toggle');
 const mobileNav = document.querySelector('header nav');
@@ -199,40 +231,30 @@ window.addEventListener('load', () => { document.getElementById('floating-button
 
 // Máscara de telefone
 const phoneInput = document.getElementById('phone');
-phoneInput.addEventListener('input', function(e) {
+phoneInput.addEventListener('input', function (e) {
     let value = e.target.value.replace(/\D/g, '');
-    if(value.length > 11) value = value.slice(0, 11);
-    if(value.length > 10){
-        value = value.replace(/^(\d{2})(\d{1})(\d{4})(\d{0,4}).*/, '($1) $2 $3-$4');
-    } else if(value.length > 5){
-        value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
-    } else if(value.length > 2){
-        value = value.replace(/^(\d{2})(\d{0,5}).*/, '($1) $2');
+    if (value.length > 11) value = value.slice(0, 11);
+    if (value.length <= 10) {
+        e.target.value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
     } else {
-        value = value.replace(/^(\d*)/, '($1');
+        e.target.value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
     }
-    e.target.value = value;
 });
 
 // Formulário WhatsApp
 document.getElementById('whatsapp-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
-    const phoneRaw = document.getElementById('phone').value.trim();
+    const phone = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
-    if(name.length < 2) { alert("Por favor, informe seu nome completo."); return; }
-    if(message.length < 2) { alert("Por favor, escreva sua mensagem."); return; }
-    const phoneNumbersOnly = phoneRaw.replace(/\D/g, '');
-    if(phoneNumbersOnly.length < 10) { alert("Por favor, informe um telefone válido com DDD (mínimo 10 dígitos)."); return; }
-    const encodedName = encodeURIComponent(name);
-    const encodedPhone = encodeURIComponent(phoneRaw);
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappNumber = "551630136700";
-    const url = `https://wa.me/${whatsappNumber}?text=Olá! Meu nome é ${encodedName}. Meu telefone é ${encodedPhone}. Mensagem: ${encodedMessage}`;
-    window.open(url, "_blank");
+    if(name && phone && message) {
+        const text = `Olá, meu nome é ${name}. Telefone: ${phone}. Mensagem: ${message}`;
+        const url = `https://wa.me/551630136700?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank');
+    }
 });
 </script>
-
 </body>
 </html>
+
 
