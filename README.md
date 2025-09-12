@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -7,13 +8,21 @@
     <meta name="author" content="Alvares Ar Condicionado">
     <meta property="og:title" content="Alvares Ar Condicionado - Ribeirão Preto">
     <meta property="og:description" content="Venda, instalação, manutenção e assistência técnica de ar condicionado com qualidade e confiança.">
-    <meta property="og:image" content="https://seusite.com/logo_alvarez.png">
+    <meta property="og:image" content="https://seusite.com/logo_alvarez.webp">
     <meta property="og:url" content="https://seusite.com">
     <meta property="og:type" content="website">
     <title>Alvares Ar Condicionado</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'" media="print">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
     <style>
         :root {
             --primary-color: #003366;
@@ -135,10 +144,69 @@
             flex-direction: column; 
             align-items: center; 
             role: region;
-            aria-labelledby: "contact-title";
+            aria-labelledby: contact-title;
         }
         .contact h2#contact-title { font-size: 2.2rem; margin-bottom: 20px; }
         .contact p { font-size: 1.2rem; margin-bottom: 20px; max-width: 600px; }
+        .contact-form {
+            max-width: 600px;
+            width: 100%;
+            margin: 20px auto;
+        }
+        .contact-form label {
+            display: block;
+            text-align: left;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid var(--white);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--white);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        .contact-form button {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .contact-form button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        .contact-form button:focus {
+            outline: 2px solid var(--white);
+            outline-offset: 2px;
+        }
+        .contact-form .error,
+        .contact-form .success {
+            display: none;
+            margin-top: 10px;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .contact-form .error.show { display: block; color: #ff4444; }
+        .contact-form .success.show { display: block; color: #44ff44; }
         .contact-buttons { 
             margin: 20px auto; 
             display: flex; 
@@ -318,6 +386,8 @@
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
             .services .card { max-width: 95%; font-size: 1rem; }
+            .contact-form input,
+            .contact-form textarea { font-size: 0.9rem; padding: 10px; }
             .contact-buttons { flex-direction: column; gap: 15px; }
             .map-section { max-width: 100%; padding: 0 10px; }
             .map-container { max-width: 100%; }
@@ -329,14 +399,19 @@
             .hero p { font-size: 0.9rem; }
             .contact h2 { font-size: 1.4rem; }
             .contact p { font-size: 1rem; }
+            .contact-form input,
+            .contact-form textarea { font-size: 0.8rem; }
             .floating-btn { width: 50px; height: 50px; font-size: 24px; }
         }
     </style>
 </head>
 <body>
     <header id="header" role="banner">
-        <img src="logo_alvarez.png" alt="Logo da Alvares Ar Condicionado, empresa de venda e manutenção de ar condicionado" aria-label="Alvares Ar Condicionado" loading="eager">
-        <button id="menu-toggle" aria-label="Alternar menu de navegação" aria-expanded="false"><i class="fas fa-bars"></i></button>
+        <picture>
+            <source srcset="logo_alvarez.webp, logo_alvarez_2x.webp 2x" type="image/webp">
+            <img src="logo_alvarez.png" alt="Logo da Alvares Ar Condicionado, empresa de venda e manutenção de ar condicionado" aria-label="Alvares Ar Condicionado" loading="eager" decoding="async">
+        </picture>
+        <button id="menu-toggle" aria-label="Alternar menu de navegação" aria-expanded="false"><i class="fas fa-bars" aria-hidden="true"></i></button>
         <nav role="navigation" aria-label="Menu principal">
             <a href="#home" aria-current="page">Home</a>
             <a href="#services">Serviços</a>
@@ -365,6 +440,19 @@
         <section class="contact" id="contact" role="region" aria-labelledby="contact-title">
             <h2 id="contact-title" lang="pt-BR">Entre em Contato Conosco</h2>
             <p>Horário: Segunda a Sexta, 08:00 às 17:30</p>
+            <form class="contact-form" id="contact-form" aria-labelledby="contact-title">
+                <label for="name">Nome *</label>
+                <input type="text" id="name" name="name" required aria-required="true" placeholder="Seu nome">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" required aria-required="true" placeholder="Seu e-mail">
+                <label for="phone">Telefone</label>
+                <input type="tel" id="phone" name="phone" placeholder="Seu telefone (opcional)">
+                <label for="message">Mensagem *</label>
+                <textarea id="message" name="message" required aria-required="true" placeholder="Sua mensagem"></textarea>
+                <button type="submit">Enviar</button>
+                <p class="success" id="success-message">Mensagem enviada com sucesso!</p>
+                <p class="error" id="error-message">Por favor, preencha todos os campos obrigatórios corretamente.</p>
+            </form>
             <div class="contact-buttons">
                 <a href="https://wa.me/551630136700" target="_blank" class="whatsapp-btn" rel="noopener noreferrer" aria-label="Contate-nos pelo WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
                 <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="instagram-btn" rel="noopener noreferrer" aria-label="Siga-nos no Instagram"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>
@@ -400,7 +488,7 @@
     </div>
 
     <script>
-        // Gerenciamento do menu hamburguer
+        // Gerenciamento do menu hamburguer e botões flutuantes
         document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.getElementById('menu-toggle');
             const nav = document.querySelector('nav');
@@ -412,15 +500,60 @@
                 nav.classList.toggle('active');
             });
 
-            // Mostrar botões flutuantes após o carregamento
             setTimeout(() => {
                 floatingButtons.classList.add('show');
             }, 500);
 
-            // Adicionar classe 'scrolled' ao header quando rolar
             window.addEventListener('scroll', () => {
                 const header = document.getElementById('header');
                 header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // Validação e envio do formulário
+            const form = document.getElementById('contact-form');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const name = form.querySelector('#name').value.trim();
+                const email = form.querySelector('#email').value.trim();
+                const phone = form.querySelector('#phone').value.trim();
+                const message = form.querySelector('#message').value.trim();
+
+                // Validação
+                const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+                const phoneRegex = /^\d{10,11}$/;
+                if (!name || !email || !message || !emailRegex.test(email) || (phone && !phoneRegex.test(phone))) {
+                    errorMessage.classList.add('show');
+                    successMessage.classList.remove('show');
+                    return;
+                }
+
+                try {
+                    // Simulação de envio (substitua por URL real, ex.: Formspree)
+                    const response = await fetch('https://formspree.io/f/your-form-id', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, email, phone, message })
+                    });
+
+                    if (response.ok) {
+                        successMessage.classList.add('show');
+                        errorMessage.classList.remove('show');
+                        form.reset();
+                        gtag('event', 'form_submission', {
+                            'event_category': 'Contact',
+                            'event_label': 'Contact Form',
+                            'value': 1
+                        });
+                    } else {
+                        throw new Error('Falha no envio');
+                    }
+                } catch (error) {
+                    errorMessage.classList.add('show');
+                    successMessage.classList.remove('show');
+                }
             });
         });
     </script>
