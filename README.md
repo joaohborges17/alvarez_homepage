@@ -359,7 +359,7 @@
         </section>
 
         <section class="contact" id="contact">
-            <h2>Contato</h2>
+            <h2>Entre em Contato Conosco</h2>
             <p>Horário: Segunda a Sexta, 08:00 às 17:30</p>
             <div class="contact-buttons">
                 <a href="https://wa.me/551630136700" target="_blank" class="whatsapp-btn" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
