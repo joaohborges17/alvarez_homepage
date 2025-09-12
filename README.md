@@ -1,17 +1,19 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alvares Ar Condicionado</title>
     <meta name="description" content="Alvares Ar Condicionado - Venda, instalação e manutenção de aparelhos de ar condicionado em Ribeirão Preto.">
+    <meta name="keywords" content="ar condicionado, instalação, manutenção, Ribeirão Preto, Alvares">
+    <meta name="author" content="Alvares Ar Condicionado">
     <meta property="og:title" content="Alvares Ar Condicionado - Ribeirão Preto">
     <meta property="og:description" content="Venda, instalação, manutenção e assistência técnica de ar condicionado com qualidade e confiança.">
     <meta property="og:image" content="https://seusite.com/logo_alvarez.png">
     <meta property="og:url" content="https://seusite.com">
     <meta property="og:type" content="website">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'" media="print" loading="lazy">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" loading="lazy">
+    <title>Alvares Ar Condicionado</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'" media="print">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
     <style>
         :root {
             --primary-color: #003366;
@@ -25,13 +27,13 @@
             --footer-bg: #002244;
         }
 
-        /* Reset e padrão */
+        /* === Reset e Padrão === */
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
         body { font-family: 'Roboto', sans-serif; background: var(--background); color: var(--text-color); line-height: 1.6; }
         a { text-decoration: none; color: inherit; transition: color 0.3s, outline 0.2s; }
         a:focus { outline: 2px solid var(--secondary-color); outline-offset: 2px; }
 
-        /* Header */
+        /* === Header === */
         header {
             position: fixed;
             top: 0;
@@ -64,7 +66,7 @@
         }
         nav:not(.active) { transform: translateY(-100%); }
 
-        /* Hero */
+        /* === Hero === */
         .hero {
             display: flex;
             flex-direction: column;
@@ -91,7 +93,7 @@
         .cta-btn:hover { transform: scale(1.05); opacity: 0.9; }
         .cta-btn:focus { outline: 2px solid var(--white); outline-offset: 2px; }
 
-        /* Serviços */
+        /* === Serviços === */
         .services { padding: 60px 20px; text-align: center; }
         .services h2 { font-size: 2.5rem; margin-bottom: 40px; color: var(--primary-color); }
         .services .cards { 
@@ -123,7 +125,7 @@
         .services .card a { color: var(--primary-color); font-weight: bold; }
         .services .card p { font-size: 0.9rem; margin-top: 5px; color: var(--text-color); }
 
-        /* Contato */
+        /* === Contato === */
         .contact { 
             background-color: var(--primary-color); 
             color: var(--white); 
@@ -132,8 +134,10 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
+            role: region;
+            aria-labelledby: "contact-title";
         }
-        .contact h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        .contact h2#contact-title { font-size: 2.2rem; margin-bottom: 20px; }
         .contact p { font-size: 1.2rem; margin-bottom: 20px; max-width: 600px; }
         .contact-buttons { 
             margin: 20px auto; 
@@ -165,15 +169,13 @@
             animation: gradientAnimation 8s ease infinite;
         }
 
-        /* Contêiner para mapa */
+        /* === Mapa === */
         .contact-content {
             display: flex;
             justify-content: center;
             max-width: 1200px;
             margin: 20px auto;
         }
-
-        /* Mapa */
         .map-section { 
             max-width: 600px; 
             width: 100%; 
@@ -194,7 +196,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
         }
 
-        /* Footer */
+        /* === Footer === */
         footer { 
             background-color: var(--footer-bg); 
             color: var(--white); 
@@ -219,7 +221,7 @@
             font-weight: bold; 
         }
 
-        /* Botões flutuantes */
+        /* === Botões Flutuantes === */
         .floating-buttons {
             position: fixed;
             bottom: 20px;
@@ -278,6 +280,8 @@
             white-space: nowrap;
             box-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
+
+        /* === Animações === */
         @keyframes pulse { 
             0%, 100% { transform: scale(1); } 
             50% { transform: scale(1.1); } 
@@ -300,9 +304,9 @@
             to { opacity: 1; transform: translateY(0); } 
         }
 
-        /* Responsividade */
+        /* === Responsividade === */
         @media (max-width: 768px) {
-            header { flex-direction: column; align-items: flex-start; }
+            header { flex-direction: column; align-items: flex-start; padding: 10px 20px; }
             #menu-toggle { display: block; }
             nav { 
                 display: none; 
@@ -317,6 +321,7 @@
             .contact-buttons { flex-direction: column; gap: 15px; }
             .map-section { max-width: 100%; padding: 0 10px; }
             .map-container { max-width: 100%; }
+            .floating-buttons { bottom: 15px; right: 15px; gap: 12px; }
         }
         @media (max-width: 480px) {
             .hero { padding: 80px 10px; }
@@ -327,73 +332,97 @@
             .floating-btn { width: 50px; height: 50px; font-size: 24px; }
         }
     </style>
-    <script defer src="script.js"></script>
 </head>
 <body>
-    <header id="header">
-        <img src="logo_alvarez.png" alt="Logo Alvares Ar Condicionado" aria-label="Alvares Ar Condicionado" loading="lazy">
-        <button id="menu-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
-        <nav role="navigation">
-            <a href="#home">Home</a>
+    <header id="header" role="banner">
+        <img src="logo_alvarez.png" alt="Logo da Alvares Ar Condicionado, empresa de venda e manutenção de ar condicionado" aria-label="Alvares Ar Condicionado" loading="eager">
+        <button id="menu-toggle" aria-label="Alternar menu de navegação" aria-expanded="false"><i class="fas fa-bars"></i></button>
+        <nav role="navigation" aria-label="Menu principal">
+            <a href="#home" aria-current="page">Home</a>
             <a href="#services">Serviços</a>
             <a href="#contact">Contato</a>
         </nav>
     </header>
 
     <main>
-        <section class="hero" id="home">
-            <h1>Alvares Ar Condicionado</h1>
+        <section class="hero" id="home" role="region" aria-labelledby="hero-title">
+            <h1 id="hero-title" lang="pt-BR">Alvares Ar Condicionado</h1>
             <p>Venda, Instalação, Manutenção e Assistência</p>
             <p>Sempre com você</p>
             <a href="https://wa.me/551630136700" target="_blank" class="cta-btn" rel="noopener noreferrer">Solicite seu Orçamento</a>
         </section>
 
-        <section class="services" id="services">
-            <h2>Nossos Serviços</h2>
+        <section class="services" id="services" role="region" aria-labelledby="services-title">
+            <h2 id="services-title" lang="pt-BR">Nossos Serviços</h2>
             <div class="cards">
-                <div class="card"><i class="fas fa-snowflake"></i> Venda de aparelhos de ar condicionado<p>Modelos residenciais e comerciais.</p></div>
-                <div class="card"><i class="fas fa-tools"></i> Instalação profissional<p>Equipe qualificada para montagem rápida e segura.</p></div>
-                <div class="card"><i class="fas fa-cogs"></i> <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" rel="noopener noreferrer">Manutenção preventiva e corretiva</a><p>Garantia de funcionamento eficiente.</p></div>
-                <div class="card"><i class="fas fa-headset"></i> Assistência técnica especializada<p>Suporte rápido e confiável.</p></div>
+                <div class="card"><i class="fas fa-snowflake" aria-hidden="true"></i> Venda de aparelhos de ar condicionado<p>Modelos residenciais e comerciais.</p></div>
+                <div class="card"><i class="fas fa-tools" aria-hidden="true"></i> Instalação profissional<p>Equipe qualificada para montagem rápida e segura.</p></div>
+                <div class="card"><i class="fas fa-cogs" aria-hidden="true"></i> <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" rel="noopener noreferrer">Manutenção preventiva e corretiva</a><p>Garantia de funcionamento eficiente.</p></div>
+                <div class="card"><i class="fas fa-headset" aria-hidden="true"></i> Assistência técnica especializada<p>Suporte rápido e confiável.</p></div>
             </div>
         </section>
 
-        <section class="contact" id="contact">
-            <h2>Entre em Contato Conosco</h2>
+        <section class="contact" id="contact" role="region" aria-labelledby="contact-title">
+            <h2 id="contact-title" lang="pt-BR">Entre em Contato Conosco</h2>
             <p>Horário: Segunda a Sexta, 08:00 às 17:30</p>
             <div class="contact-buttons">
-                <a href="https://wa.me/551630136700" target="_blank" class="whatsapp-btn" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="instagram-btn" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://wa.me/551630136700" target="_blank" class="whatsapp-btn" rel="noopener noreferrer" aria-label="Contate-nos pelo WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+                <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="instagram-btn" rel="noopener noreferrer" aria-label="Siga-nos no Instagram"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>
             </div>
             <div class="contact-content">
-                <div class="map-section">
-                    <h3>Nossa Localização</h3>
+                <div class="map-section" role="region" aria-labelledby="map-title">
+                    <h3 id="map-title" lang="pt-BR">Nossa Localização</h3>
                     <div class="map-container">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.434603734647!2d-47.82334468445166!3d-21.21792318590764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x949320d6e6d36d9f%3A0x7e16e92e682d0d42!2sR.%20Genoveva%20On%C3%B3fre%20Barban%2C%20657%20-%20Planalto%20Verde%2C%20Ribeir%C3%A3o%20Preto%20-%20SP%2C%2014056-340!5e0!3m2!1spt-BR!2sbr!4v1694440000000!5m2!1spt-BR!2sbr" 
-                            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" aria-label="Localização da Alvares Ar Condicionado"></iframe>
+                            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" fetchpriority="high" aria-label="Mapa da localização da Alvares Ar Condicionado em Ribeirão Preto"></iframe>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        &copy; 2025 Alvares Ar Condicionado. Todos os direitos reservados.
-        <br>
-        <i class="fab fa-whatsapp" style="color:#25D366; margin-right:5px;"></i>
-        <a href="https://wa.me/551630136700" target="_blank" rel="noopener noreferrer">+55 16 3013-6700</a> | 
-        <i class="fab fa-instagram" style="color:#ff6600; margin-left:10px; margin-right:5px;"></i>
-        <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" rel="noopener noreferrer">@alvaresarcondicionado</a>
-        <br>
-        <span style="color:#ff6600; font-weight:bold;">Loja Online: Em breve!</span>
-        <br>
-        <a href="#home" class="back-to-top">Voltar ao topo</a>
+    <footer role="contentinfo">
+        <p>&copy; 2025 Alvares Ar Condicionado. Todos os direitos reservados.</p>
+        <p>
+            <i class="fab fa-whatsapp" style="color:#25D366; margin-right:5px;" aria-hidden="true"></i>
+            <a href="https://wa.me/551630136700" target="_blank" rel="noopener noreferrer" aria-label="Contate-nos pelo WhatsApp">+55 16 3013-6700</a> | 
+            <i class="fab fa-instagram" style="color:#ff6600; margin-left:10px; margin-right:5px;" aria-hidden="true"></i>
+            <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" rel="noopener noreferrer" aria-label="Siga-nos no Instagram">@alvaresarcondicionado</a>
+        </p>
+        <p><span style="color:#ff6600; font-weight:bold;">Loja Online: Em breve!</span></p>
+        <a href="#home" class="back-to-top" aria-label="Voltar ao topo da página">Voltar ao topo</a>
     </footer>
 
-    <div class="floating-buttons" id="floating-buttons">
-        <a href="https://wa.me/551630136700" target="_blank" class="floating-btn whatsapp-btn-floating" aria-label="WhatsApp" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="floating-btn instagram-btn-floating" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-        <a class="floating-btn loja-btn-disabled" data-title="Em breve!" aria-label="Loja"><i class="fas fa-store"></i></a>
+    <div class="floating-buttons" id="floating-buttons" role="region" aria-label="Botões de contato rápidos">
+        <a href="https://wa.me/551630136700" target="_blank" class="floating-btn whatsapp-btn-floating" aria-label="Contatar via WhatsApp" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="floating-btn instagram-btn-floating" aria-label="Visitar Instagram" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a class="floating-btn loja-btn-disabled" data-title="Em breve!" aria-label="Loja online (indisponível no momento)" tabindex="0"><i class="fas fa-store" aria-hidden="true"></i></a>
     </div>
+
+    <script>
+        // Gerenciamento do menu hamburguer
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const nav = document.querySelector('nav');
+            const floatingButtons = document.getElementById('floating-buttons');
+
+            menuToggle.addEventListener('click', () => {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                nav.classList.toggle('active');
+            });
+
+            // Mostrar botões flutuantes após o carregamento
+            setTimeout(() => {
+                floatingButtons.classList.add('show');
+            }, 500);
+
+            // Adicionar classe 'scrolled' ao header quando rolar
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+        });
+    </script>
 </body>
 </html>
