@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +7,7 @@
     <meta name="author" content="Alvares Ar Condicionado">
     <meta property="og:title" content="Alvares Ar Condicionado - Ribeirão Preto">
     <meta property="og:description" content="Venda, instalação, manutenção e assistência técnica de ar condicionado com qualidade e confiança.">
-    <meta property="og:image" content="https://seusite.com/logo_alvarez.webp">
+    <meta property="og:image" content="https://seusite.com/logo_alvarez.png">
     <meta property="og:url" content="https://seusite.com">
     <meta property="og:type" content="website">
     <title>Alvares Ar Condicionado</title>
@@ -344,10 +343,7 @@
 </head>
 <body>
     <header id="header" role="banner">
-        <picture>
-            <source srcset="logo_alvarez.webp, logo_alvarez_2x.webp 2x" type="image/webp">
-            <img src="logo_alvarez.png" alt="Logo da Alvares Ar Condicionado, empresa de venda e manutenção de ar condicionado" aria-label="Alvares Ar Condicionado" loading="eager" decoding="async">
-        </picture>
+        <img src="logo_alvarez.png" alt="Logo da Alvares Ar Condicionado, empresa de venda e manutenção de ar condicionado" aria-label="Alvares Ar Condicionado" loading="eager" decoding="async">
         <button id="menu-toggle" aria-label="Alternar menu de navegação" aria-expanded="false"><i class="fas fa-bars" aria-hidden="true"></i></button>
         <nav role="navigation" aria-label="Menu principal">
             <a href="#home" aria-current="page">Home</a>
