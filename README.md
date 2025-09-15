@@ -1,4 +1,4 @@
-<ht<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -99,9 +99,15 @@
             margin-top: 15px;
             transition: transform 0.3s, opacity 0.3s;
             cursor: pointer;
+            border: none;
+            animation: pulseCTA 2s infinite;
         }
         .cta-btn:hover { transform: scale(1.05); opacity: 0.9; }
         .cta-btn:focus { outline: 2px solid var(--white); outline-offset: 2px; }
+        @keyframes pulseCTA {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 102, 0, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(255, 102, 0, 0.7); }
+        }
 
         /* === Serviços === */
         .services { padding: 60px 20px; text-align: center; }
@@ -360,22 +366,11 @@
             transform: scale(1.2); 
             box-shadow: 0 10px 20px rgba(0,0,0,0.4); 
         }
-        .whatsapp-btn-floating { 
-            background-color: var(--whatsapp-color); 
+        .budget-btn-floating {
+            background-color: var(--secondary-color);
         }
-        .instagram-btn-floating {
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-            background-size: 400% 400%;
-            animation: gradientAnimation 8s ease infinite;
-        }
-        .loja-btn-disabled {
-            background-color: #999;
-            cursor: not-allowed;
-            position: relative;
-            animation: pulseDisabled 2s infinite;
-        }
-        .loja-btn-disabled:hover::after {
-            content: attr(data-title);
+        .budget-btn-floating:hover::after {
+            content: "Solicite seu Orçamento";
             position: absolute;
             bottom: 70px;
             right: 50%;
@@ -385,21 +380,24 @@
             padding: 6px 10px;
             border-radius: 6px;
             font-size: 0.9rem;
-            white-space: nowrap;
             box-shadow: 0 2px 6px rgba(0,0,0,0.3);
             text-align: center;
-            width: auto;
-            min-width: 150px;
+            max-width: 150px;
+            line-height: 1.4;
+        }
+        .whatsapp-btn-floating { 
+            background-color: var(--whatsapp-color); 
+        }
+        .instagram-btn-floating {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s ease infinite;
         }
 
         /* === Animações === */
         @keyframes pulse { 
             0%, 100% { transform: scale(1); } 
             50% { transform: scale(1.1); } 
-        }
-        @keyframes pulseDisabled { 
-            0%, 100% { transform: scale(1); } 
-            50% { transform: scale(1.05); } 
         }
         @keyframes gradientAnimation { 
             0% { background-position: 0% 50%; } 
@@ -439,7 +437,7 @@
             .map-container { max-width: 100%; height: calc(100% - 40px); }
             .floating-buttons { bottom: 15px; right: 15px; gap: 12px; }
             .modal-content { width: 95%; }
-            .loja-btn-disabled:hover::after { font-size: 0.8rem; padding: 5px 8px; }
+            .budget-btn-floating:hover::after { font-size: 0.8rem; padding: 5px 8px; max-width: 120px; }
         }
         @media (max-width: 480px) {
             .hero { padding: 80px 10px; }
@@ -451,7 +449,7 @@
             .floating-btn { width: 50px; height: 50px; font-size: 24px; }
             .modal-content { padding: 15px; }
             .modal-content h3 { font-size: 1.3rem; }
-            .loja-btn-disabled:hover::after { font-size: 0.7rem; padding: 4px 6px; }
+            .budget-btn-floating:hover::after { font-size: 0.7rem; padding: 4px 6px; max-width: 100px; }
         }
     </style>
 </head>
@@ -516,9 +514,9 @@
     </footer>
 
     <div class="floating-buttons" id="floating-buttons" role="region" aria-label="Botões de contato rápidos">
+        <button class="floating-btn budget-btn-floating" id="open-budget-form" aria-label="Abrir formulário para solicitação de orçamento"><i class="fas fa-calculator" aria-hidden="true"></i></button>
         <a href="https://wa.me/551630136700" target="_blank" class="floating-btn whatsapp-btn-floating" aria-label="Contatar via WhatsApp" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
         <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="floating-btn instagram-btn-floating" aria-label="Visitar Instagram" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-        <a class="floating-btn loja-btn-disabled" data-title="Em breve!" aria-label="Loja online (indisponível no momento)" tabindex="0"><i class="fas fa-store" aria-hidden="true"></i></a>
     </div>
 
     <div class="modal" id="contact-modal" role="dialog" aria-labelledby="form-title">
@@ -543,7 +541,7 @@
             const menuToggle = document.getElementById('menu-toggle');
             const nav = document.querySelector('nav');
             const floatingButtons = document.getElementById('floating-buttons');
-            const openBudgetFormBtn = document.getElementById('open-budget-form');
+            const openBudgetFormBtn = document.querySelectorAll('#open-budget-form');
             const closeFormBtn = document.getElementById('close-form');
             const modal = document.getElementById('contact-modal');
             const form = document.getElementById('whatsapp-form');
@@ -566,9 +564,11 @@
                 header.classList.toggle('scrolled', window.scrollY > 50);
             });
 
-            // Abrir modal com o botão de orçamento
-            openBudgetFormBtn.addEventListener('click', () => {
-                modal.classList.add('show');
+            // Abrir modal com os botões de orçamento (hero e flutuante)
+            openBudgetFormBtn.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    modal.classList.add('show');
+                });
             });
 
             // Fechar modal
