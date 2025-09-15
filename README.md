@@ -1,3 +1,4 @@
+<ht<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -97,6 +98,7 @@
             font-weight: bold;
             margin-top: 15px;
             transition: transform 0.3s, opacity 0.3s;
+            cursor: pointer;
         }
         .cta-btn:hover { transform: scale(1.05); opacity: 0.9; }
         .cta-btn:focus { outline: 2px solid var(--white); outline-offset: 2px; }
@@ -145,10 +147,10 @@
             role: region;
             aria-labelledby: contact-title;
         }
-        .contact h2#contact-title { font-size: 2.2rem; margin-bottom: 20px; }
-        .contact p { font-size: 1.2rem; margin-bottom: 20px; max-width: 600px; }
+        .contact h2#contact-title { font-size: 2.2rem; margin-bottom: 10px; }
+        .contact p { font-size: 1.2rem; margin-bottom: 10px; max-width: 600px; }
         .contact-buttons { 
-            margin: 20px auto; 
+            margin: 10px auto; 
             display: flex; 
             justify-content: center; 
             gap: 20px; 
@@ -177,31 +179,43 @@
             animation: gradientAnimation 8s ease infinite;
         }
 
-        /* === Formulário de Contato === */
-        .contact-form {
-            max-width: 600px;
+        /* === Modal do Formulário === */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            margin: 20px auto;
-            padding: 20px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            color: var(--text-color);
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
         }
-        .contact-form h3 {
+        .modal-content {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+        .modal-content h3 {
             font-size: 1.5rem;
             color: var(--primary-color);
             margin-bottom: 20px;
             text-align: center;
         }
-        .contact-form label {
+        .modal-content label {
             display: block;
             font-weight: bold;
             margin-bottom: 5px;
             color: var(--text-color);
         }
-        .contact-form input,
-        .contact-form textarea {
+        .modal-content input,
+        .modal-content textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -210,17 +224,17 @@
             font-size: 1rem;
             font-family: 'Roboto', sans-serif;
         }
-        .contact-form textarea {
+        .modal-content textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 80px;
         }
-        .contact-form input:focus,
-        .contact-form textarea:focus {
+        .modal-content input:focus,
+        .modal-content textarea:focus {
             border-color: var(--secondary-color);
             outline: none;
             box-shadow: 0 0 5px rgba(255, 102, 0, 0.5);
         }
-        .contact-form button {
+        .modal-content button[type="submit"] {
             background-color: var(--whatsapp-color);
             color: var(--white);
             padding: 14px 28px;
@@ -231,40 +245,62 @@
             transition: transform 0.3s, opacity 0.3s;
             width: 100%;
         }
-        .contact-form button:hover {
+        .modal-content button[type="submit"]:hover {
             transform: scale(1.05);
             opacity: 0.9;
         }
-        .contact-form button:focus {
+        .modal-content button[type="submit"]:focus {
             outline: 2px solid var(--white);
             outline-offset: 2px;
         }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-btn:hover { color: var(--secondary-color); }
+        .modal.show { display: flex; }
 
         /* === Mapa === */
         .contact-content {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
+            align-items: stretch;
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 10px auto;
+            gap: 20px;
         }
         .map-section { 
-            max-width: 600px; 
-            width: 100%; 
-            text-align: center; 
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            width: 100%;
+            height: 450px;
+            text-align: center;
         }
         .map-section h3 { 
             font-size: 1.5rem; 
             color: var(--white); 
-            margin-bottom: 20px; 
+            margin-bottom: 10px; 
             text-align: center; 
         }
         .map-container { 
-            width: 100%; 
-            max-width: 600px; 
-            margin: 0 auto; 
-            border-radius: 12px; 
-            overflow: hidden; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            height: calc(100% - 40px);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
         }
 
         /* === Footer === */
@@ -317,6 +353,8 @@
             box-shadow: 0 6px 14px rgba(0,0,0,0.3);
             transition: transform 0.3s, box-shadow 0.3s;
             animation: pulse 2s infinite;
+            position: relative;
+            text-align: center;
         }
         .floating-btn:hover { 
             transform: scale(1.2); 
@@ -324,7 +362,6 @@
         }
         .whatsapp-btn-floating { 
             background-color: var(--whatsapp-color); 
-            order: -1; 
         }
         .instagram-btn-floating {
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
@@ -350,6 +387,9 @@
             font-size: 0.9rem;
             white-space: nowrap;
             box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            text-align: center;
+            width: auto;
+            min-width: 150px;
         }
 
         /* === Animações === */
@@ -390,10 +430,16 @@
             .hero p { font-size: 1rem; }
             .services .card { max-width: 95%; font-size: 1rem; }
             .contact-buttons { flex-direction: column; gap: 15px; }
-            .map-section { max-width: 100%; padding: 0 10px; }
-            .map-container { max-width: 100%; }
-            .contact-form { padding: 15px; }
+            .contact-content { flex-direction: column; align-items: center; }
+            .map-section { 
+                max-width: 100%; 
+                padding: 0 10px; 
+                height: 400px;
+            }
+            .map-container { max-width: 100%; height: calc(100% - 40px); }
             .floating-buttons { bottom: 15px; right: 15px; gap: 12px; }
+            .modal-content { width: 95%; }
+            .loja-btn-disabled:hover::after { font-size: 0.8rem; padding: 5px 8px; }
         }
         @media (max-width: 480px) {
             .hero { padding: 80px 10px; }
@@ -401,8 +447,11 @@
             .hero p { font-size: 0.9rem; }
             .contact h2 { font-size: 1.4rem; }
             .contact p { font-size: 1rem; }
-            .contact-form h3 { font-size: 1.3rem; }
+            .map-section { height: 350px; }
             .floating-btn { width: 50px; height: 50px; font-size: 24px; }
+            .modal-content { padding: 15px; }
+            .modal-content h3 { font-size: 1.3rem; }
+            .loja-btn-disabled:hover::after { font-size: 0.7rem; padding: 4px 6px; }
         }
     </style>
 </head>
@@ -422,7 +471,7 @@
             <h1 id="hero-title" lang="pt-BR">Alvares Ar Condicionado</h1>
             <p>Venda, Instalação, Manutenção e Assistência</p>
             <p>Sempre com você</p>
-            <a href="https://wa.me/551630136700" target="_blank" class="cta-btn" rel="noopener noreferrer">Solicite seu Orçamento</a>
+            <button class="cta-btn" id="open-budget-form" aria-label="Abrir formulário para solicitação de orçamento">Solicite seu Orçamento</button>
         </section>
 
         <section class="services" id="services" role="region" aria-labelledby="services-title">
@@ -438,18 +487,6 @@
         <section class="contact" id="contact" role="region" aria-labelledby="contact-title">
             <h2 id="contact-title" lang="pt-BR">Entre em Contato Conosco</h2>
             <p>Horário: Segunda a Sexta, 08:00 às 17:30</p>
-            <div class="contact-form" role="form" aria-labelledby="form-title">
-                <h3 id="form-title" lang="pt-BR">Envie sua Mensagem</h3>
-                <form id="whatsapp-form">
-                    <label for="name">Nome:</label>
-                    <input type="text" id="name" name="name" required aria-required="true" placeholder="Digite seu nome">
-                    <label for="phone">Telefone:</label>
-                    <input type="tel" id="phone" name="phone" required aria-required="true" placeholder="Digite seu telefone (com DDD)">
-                    <label for="message">Mensagem:</label>
-                    <textarea id="message" name="message" required aria-required="true" placeholder="Descreva sua solicitação"></textarea>
-                    <button type="submit" aria-label="Enviar mensagem via WhatsApp">Enviar via WhatsApp</button>
-                </form>
-            </div>
             <div class="contact-buttons">
                 <a href="https://wa.me/551630136700" target="_blank" class="whatsapp-btn" rel="noopener noreferrer" aria-label="Contate-nos pelo WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
                 <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="instagram-btn" rel="noopener noreferrer" aria-label="Siga-nos no Instagram"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>
@@ -459,7 +496,7 @@
                     <h3 id="map-title" lang="pt-BR">Nossa Localização</h3>
                     <div class="map-container">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.434603734647!2d-47.82334468445166!3d-21.21792318590764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x949320d6e6d36d9f%3A0x7e16e92e682d0d42!2sR.%20Genoveva%20On%C3%B3fre%20Barban%2C%20657%20-%20Planalto%20Verde%2C%20Ribeir%C3%A3o%20Preto%20-%20SP%2C%2014056-340!5e0!3m2!1spt-BR!2sbr!4v1694440000000!5m2!1spt-BR!2sbr" 
-                            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" fetchpriority="high" aria-label="Mapa da localização da Alvares Ar Condicionado em Ribeirão Preto"></iframe>
+                            style="border:0;" allowfullscreen="" loading="lazy" fetchpriority="high" aria-label="Mapa da localização da Alvares Ar Condicionado em Ribeirão Preto"></iframe>
                     </div>
                 </div>
             </div>
@@ -484,27 +521,66 @@
         <a class="floating-btn loja-btn-disabled" data-title="Em breve!" aria-label="Loja online (indisponível no momento)" tabindex="0"><i class="fas fa-store" aria-hidden="true"></i></a>
     </div>
 
+    <div class="modal" id="contact-modal" role="dialog" aria-labelledby="form-title">
+        <div class="modal-content">
+            <span class="close-btn" id="close-form" aria-label="Fechar formulário">&times;</span>
+            <h3 id="form-title" lang="pt-BR">Solicite seu Orçamento</h3>
+            <form id="whatsapp-form">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required aria-required="true" placeholder="Digite seu nome">
+                <label for="phone">Telefone:</label>
+                <input type="tel" id="phone" name="phone" required aria-required="true" placeholder="Digite seu telefone (com DDD)">
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" required aria-required="true" placeholder="Descreva sua solicitação"></textarea>
+                <button type="submit" aria-label="Enviar mensagem via WhatsApp">Enviar via WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
     <script>
-        // Gerenciamento do menu hamburguer e botões flutuantes
+        // Gerenciamento do menu hamburguer, botões flutuantes e modal
         document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.getElementById('menu-toggle');
             const nav = document.querySelector('nav');
             const floatingButtons = document.getElementById('floating-buttons');
+            const openBudgetFormBtn = document.getElementById('open-budget-form');
+            const closeFormBtn = document.getElementById('close-form');
+            const modal = document.getElementById('contact-modal');
             const form = document.getElementById('whatsapp-form');
 
+            // Menu hamburguer
             menuToggle.addEventListener('click', () => {
                 const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
                 menuToggle.setAttribute('aria-expanded', !isExpanded);
                 nav.classList.toggle('active');
             });
 
+            // Mostrar botões flutuantes
             setTimeout(() => {
                 floatingButtons.classList.add('show');
             }, 500);
 
+            // Efeito de scroll no header
             window.addEventListener('scroll', () => {
                 const header = document.getElementById('header');
                 header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // Abrir modal com o botão de orçamento
+            openBudgetFormBtn.addEventListener('click', () => {
+                modal.classList.add('show');
+            });
+
+            // Fechar modal
+            closeFormBtn.addEventListener('click', () => {
+                modal.classList.remove('show');
+            });
+
+            // Fechar modal ao clicar fora
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                }
             });
 
             // Manipulação do formulário para WhatsApp
@@ -521,8 +597,9 @@
                 // Redirecionar para o WhatsApp
                 window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
                 
-                // Opcional: Limpar o formulário após o envio
+                // Limpar formulário e fechar modal
                 form.reset();
+                modal.classList.remove('show');
             });
         });
     </script>
