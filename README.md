@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -270,6 +271,116 @@
         .close-btn:hover { color: var(--secondary-color); }
         .modal.show { display: flex; }
 
+        /* === Chatbot Modal === */
+        .chatbot-modal {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .chatbot-modal.show { display: flex; }
+        .chatbot-header {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .chatbot-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9f9f9;
+        }
+        .chatbot-message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+            line-height: 1.4;
+            position: relative;
+        }
+        .chatbot-message.bot {
+            background: var(--primary-color);
+            color: var(--white);
+            margin-left: auto;
+        }
+        .chatbot-message.user {
+            background: var(--secondary-color);
+            color: var(--white);
+            margin-right: auto;
+        }
+        .chatbot-message.loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--white);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        .chatbot-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .chatbot-option-btn {
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+        .chatbot-option-btn:hover {
+            opacity: 0.9;
+        }
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            background: var(--card-bg);
+            border-top: 1px solid #ccc;
+        }
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+        .chatbot-input button {
+            background: var(--whatsapp-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .chatbot-input button:hover {
+            opacity: 0.9;
+        }
+        .chatbot-btn-floating svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--white);
+        }
+
         /* === Mapa === */
         .contact-content {
             display: flex;
@@ -392,6 +503,25 @@
             background-size: 400% 400%;
             animation: gradientAnimation 8s ease infinite;
         }
+        .chatbot-btn-floating {
+            background-color: #007bff;
+        }
+        .chatbot-btn-floating:hover::after {
+            content: "Chatbot de Suporte";
+            position: absolute;
+            bottom: 70px;
+            right: 50%;
+            transform: translateX(50%);
+            background-color: #333;
+            color: var(--white);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 150px;
+            line-height: 1.4;
+        }
 
         /* === Animações === */
         @keyframes pulse { 
@@ -410,6 +540,9 @@
         @keyframes slideIn { 
             from { opacity: 0; transform: translateY(20px); } 
             to { opacity: 1; transform: translateY(0); } 
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* === Responsividade === */
@@ -436,7 +569,8 @@
             .map-container { max-width: 100%; height: calc(100% - 40px); }
             .floating-buttons { bottom: 15px; right: 15px; gap: 12px; }
             .modal-content { width: 95%; }
-            .budget-btn-floating:hover::after { font-size: 0.8rem; padding: 5px 8px; max-width: 120px; }
+            .chatbot-modal { width: 90%; height: 400px; }
+            .budget-btn-floating:hover::after, .chatbot-btn-floating:hover::after { font-size: 0.8rem; padding: 5px 8px; max-width: 120px; }
         }
         @media (max-width: 480px) {
             .hero { padding: 80px 10px; }
@@ -445,10 +579,12 @@
             .contact h2 { font-size: 1.4rem; }
             .contact p { font-size: 1rem; }
             .map-section { height: 350px; }
-            .floating-btn { width: 50px; height: 50px; font-size: 24px; }
+            .floating-btn { width: 50px; height: 50px; }
+            .floating-btn svg { width: 24px; height: 24px; }
             .modal-content { padding: 15px; }
             .modal-content h3 { font-size: 1.3rem; }
-            .budget-btn-floating:hover::after { font-size: 0.7rem; padding: 4px 6px; max-width: 100px; }
+            .chatbot-modal { width: 95%; height: 350px; }
+            .budget-btn-floating:hover::after, .chatbot-btn-floating:hover::after { font-size: 0.7rem; padding: 4px 6px; max-width: 100px; }
         }
     </style>
 </head>
@@ -514,6 +650,14 @@
 
     <div class="floating-buttons" id="floating-buttons" role="region" aria-label="Botões de contato rápidos">
         <button class="floating-btn budget-btn-floating" id="open-budget-form" aria-label="Abrir formulário para solicitação de orçamento"><i class="fas fa-calculator" aria-hidden="true"></i></button>
+        <button class="floating-btn chatbot-btn-floating" id="open-chatbot" aria-label="Abrir chatbot de suporte">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="currentColor"/>
+                <circle cx="9" cy="10" r="1.5" fill="#fff"/>
+                <circle cx="15" cy="10" r="1.5" fill="#fff"/>
+                <path d="M12 14.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="#fff"/>
+            </svg>
+        </button>
         <a href="https://wa.me/551630136700" target="_blank" class="floating-btn whatsapp-btn-floating" aria-label="Contatar via WhatsApp" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
         <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="floating-btn instagram-btn-floating" aria-label="Visitar Instagram" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
     </div>
@@ -534,8 +678,17 @@
         </div>
     </div>
 
+    <div class="chatbot-modal" id="chatbot-modal" role="dialog" aria-labelledby="chatbot-title">
+        <div class="chatbot-header" id="chatbot-title">Assistente Alvares</div>
+        <div class="chatbot-body" id="chatbot-messages"></div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Digite sua mensagem..." aria-label="Digite sua mensagem para o chatbot">
+            <button id="chatbot-send" aria-label="Enviar mensagem no chatbot">Enviar</button>
+        </div>
+    </div>
+
     <script>
-        // Gerenciamento do menu hamburguer, botões flutuantes e modal
+        // Gerenciamento do menu hamburguer, botões flutuantes, modal e chatbot
         document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.getElementById('menu-toggle');
             const nav = document.querySelector('nav');
@@ -544,6 +697,11 @@
             const closeFormBtn = document.getElementById('close-form');
             const modal = document.getElementById('contact-modal');
             const form = document.getElementById('whatsapp-form');
+            const openChatbotBtn = document.getElementById('open-chatbot');
+            const chatbotModal = document.getElementById('chatbot-modal');
+            const chatbotInput = document.getElementById('chatbot-input');
+            const chatbotSend = document.getElementById('chatbot-send');
+            const chatbotMessages = document.getElementById('chatbot-messages');
 
             // Menu hamburguer
             menuToggle.addEventListener('click', () => {
@@ -567,6 +725,7 @@
             openBudgetFormBtn.forEach(btn => {
                 btn.addEventListener('click', () => {
                     modal.classList.add('show');
+                    chatbotModal.classList.remove('show');
                 });
             });
 
@@ -589,16 +748,217 @@
                 const phone = document.getElementById('phone').value.trim();
                 const message = document.getElementById('message').value.trim();
                 
-                // Formatar a mensagem para o WhatsApp
                 const whatsappMessage = `Olá, meu nome é ${encodeURIComponent(name)}. Meu telefone é ${encodeURIComponent(phone)}. Mensagem: ${encodeURIComponent(message)}`;
                 const whatsappUrl = `https://wa.me/551630136700?text=${whatsappMessage}`;
                 
-                // Redirecionar para o WhatsApp
                 window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
                 
-                // Limpar formulário e fechar modal
                 form.reset();
                 modal.classList.remove('show');
+            });
+
+            // Chatbot logic
+            let chatState = 'initial';
+            let btuData = {};
+            let isBotResponding = false;
+
+            const addMessage = (message, sender, options = []) => {
+                const msgDiv = document.createElement('div');
+                msgDiv.classList.add('chatbot-message', sender);
+                if (sender === 'bot' && isBotResponding) {
+                    msgDiv.classList.add('loading');
+                }
+                msgDiv.textContent = message;
+                chatbotMessages.appendChild(msgDiv);
+
+                if (options.length > 0) {
+                    const optionsDiv = document.createElement('div');
+                    optionsDiv.classList.add('chatbot-options');
+                    options.forEach(opt => {
+                        const btn = document.createElement('button');
+                        btn.classList.add('chatbot-option-btn');
+                        btn.textContent = opt.label;
+                        btn.addEventListener('click', () => handleChatbotInput(opt.value));
+                        optionsDiv.appendChild(btn);
+                    });
+                    chatbotMessages.appendChild(optionsDiv);
+                }
+
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                if (sender === 'bot' && isBotResponding) {
+                    setTimeout(() => msgDiv.classList.remove('loading'), 1000);
+                }
+            };
+
+            const handleChatbotInput = (input) => {
+                if (isBotResponding) return;
+                addMessage(input, 'user');
+                isBotResponding = true;
+
+                let response = '';
+                let options = [];
+
+                if (chatState === 'initial') {
+                    if (input.toLowerCase().includes('btu') || input.toLowerCase().includes('calcular') || input === 'Calcular BTU') {
+                        chatState = 'btu_usage';
+                        response = 'Perfeito! Vamos calcular o BTU necessário. Qual é o tipo de ambiente?';
+                        options = [
+                            { label: 'Residencial', value: 'Residencial' },
+                            { label: 'Comercial', value: 'Comercial' }
+                        ];
+                    } else if (input.toLowerCase().includes('suporte') || input.toLowerCase().includes('técnico') || input === 'Solicitar Suporte') {
+                        chatState = 'support_name';
+                        response = 'Entendido! Para solicitar suporte técnico, por favor, informe seu nome.';
+                    } else if (input.toLowerCase().includes('reiniciar') || input === 'Reiniciar') {
+                        chatState = 'initial';
+                        btuData = {};
+                        response = 'Conversa reiniciada! Como posso ajudar? Escolha uma opção:';
+                        options = [
+                            { label: 'Calcular BTU', value: 'Calcular BTU' },
+                            { label: 'Solicitar Suporte', value: 'Solicitar Suporte' }
+                        ];
+                    } else {
+                        response = 'Desculpe, não entendi. Escolha uma opção para continuar:';
+                        options = [
+                            { label: 'Calcular BTU', value: 'Calcular BTU' },
+                            { label: 'Solicitar Suporte', value: 'Solicitar Suporte' }
+                        ];
+                    }
+                } else if (chatState === 'btu_usage') {
+                    btuData.usage = input;
+                    if (!['Residencial', 'Comercial'].includes(input)) {
+                        response = 'Por favor, escolha uma opção válida: Residencial ou Comercial.';
+                        options = [
+                            { label: 'Residencial', value: 'Residencial' },
+                            { label: 'Comercial', value: 'Comercial' }
+                        ];
+                    } else {
+                        chatState = 'btu_area';
+                        response = 'Qual é a área do ambiente em metros quadrados (comprimento x largura)?';
+                    }
+                } else if (chatState === 'btu_area') {
+                    btuData.area = parseFloat(input);
+                    if (isNaN(btuData.area) || btuData.area <= 0) {
+                        response = 'Por favor, insira um valor válido para a área em metros quadrados (ex.: 20).';
+                    } else {
+                        chatState = 'btu_people';
+                        response = 'Quantas pessoas geralmente ficam no ambiente?';
+                    }
+                } else if (chatState === 'btu_people') {
+                    btuData.people = parseInt(input);
+                    if (isNaN(btuData.people) || btuData.people < 0) {
+                        response = 'Por favor, insira um número válido de pessoas (ex.: 2).';
+                    } else {
+                        chatState = 'btu_sun';
+                        response = 'O ambiente recebe luz solar direta?';
+                        options = [
+                            { label: 'Sim', value: 'Sim' },
+                            { label: 'Não', value: 'Não' }
+                        ];
+                    }
+                } else if (chatState === 'btu_sun') {
+                    btuData.sun = input.toLowerCase() === 'sim';
+                    chatState = 'btu_appliances';
+                    response = 'Existem aparelhos eletrônicos que geram calor no ambiente (ex.: computadores, TVs)?';
+                    options = [
+                        { label: 'Sim', value: 'Sim' },
+                        { label: 'Não', value: 'Não' }
+                    ];
+                } else if (chatState === 'btu_appliances') {
+                    btuData.appliances = input.toLowerCase() === 'sim';
+                    chatState = 'initial';
+                    const baseBtu = btuData.area * (btuData.usage === 'Residencial' ? 600 : 800);
+                    const peopleBtu = btuData.people * 400;
+                    const sunBtu = btuData.sun ? 800 : 0;
+                    const applianceBtu = btuData.appliances ? 600 : 0;
+                    const totalBtu = Math.ceil((baseBtu + peopleBtu + sunBtu + applianceBtu) / 1000) * 1000;
+                    response = `Com base nas informações fornecidas:\n- Uso: ${btuData.usage}\n- Área: ${btuData.area} m²\n- Pessoas: ${btuData.people}\n- Luz solar: ${btuData.sun ? 'Sim' : 'Não'}\n- Aparelhos: ${btuData.appliances ? 'Sim' : 'Não'}\nO ar condicionado ideal para o ambiente tem aproximadamente ${totalBtu} BTUs.\nDeseja solicitar um orçamento ou reiniciar?`;
+                    options = [
+                        { label: 'Solicitar Orçamento', value: 'Solicitar Orçamento' },
+                        { label: 'Reiniciar', value: 'Reiniciar' }
+                    ];
+                    btuData = {};
+                } else if (chatState === 'support_name') {
+                    btuData.name = input;
+                    chatState = 'support_phone';
+                    response = `Obrigado, ${btuData.name}! Qual é o seu número de telefone (com DDD)?`;
+                } else if (chatState === 'support_phone') {
+                    btuData.phone = input;
+                    if (!/^\d{10,11}$/.test(btuData.phone.replace(/\D/g, ''))) {
+                        response = 'Por favor, insira um número de telefone válido com DDD (ex.: 16987654321).';
+                    } else {
+                        chatState = 'support_issue';
+                        response = 'Descreva o problema que você está enfrentando.';
+                    }
+                } else if (chatState === 'support_issue') {
+                    btuData.issue = input;
+                    chatState = 'initial';
+                    const whatsappMessage = `Solicitação de Suporte Técnico\nNome: ${encodeURIComponent(btuData.name)}\nTelefone: ${encodeURIComponent(btuData.phone)}\nProblema: ${encodeURIComponent(btuData.issue)}`;
+                    const whatsappUrl = `https://wa.me/551630136700?text=${whatsappMessage}`;
+                    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+                    response = 'Sua solicitação de suporte foi enviada via WhatsApp. Nossa equipe entrará em contato em breve! Deseja reiniciar a conversa?';
+                    options = [
+                        { label: 'Reiniciar', value: 'Reiniciar' },
+                        { label: 'Fechar', value: 'Fechar' }
+                    ];
+                    btuData = {};
+                } else if (input === 'Solicitar Orçamento') {
+                    modal.classList.add('show');
+                    chatbotModal.classList.remove('show');
+                    response = 'Por favor, preencha o formulário de orçamento que foi aberto.';
+                } else if (input === 'Fechar') {
+                    chatbotModal.classList.remove('show');
+                    response = '';
+                } else if (input === 'Reiniciar') {
+                    chatState = 'initial';
+                    btuData = {};
+                    response = 'Conversa reiniciada! Como posso ajudar? Escolha uma opção:';
+                    options = [
+                        { label: 'Calcular BTU', value: 'Calcular BTU' },
+                        { label: 'Solicitar Suporte', value: 'Solicitar Suporte' }
+                    ];
+                }
+
+                if (response) {
+                    setTimeout(() => {
+                        addMessage(response, 'bot', options);
+                        isBotResponding = false;
+                    }, 1000);
+                } else {
+                    isBotResponding = false;
+                }
+            };
+
+            openChatbotBtn.addEventListener('click', () => {
+                chatbotModal.classList.toggle('show');
+                modal.classList.remove('show');
+                if (chatbotModal.classList.contains('show') && chatState === 'initial') {
+                    addMessage('Olá! Bem-vindo ao Assistente Alvares. Como posso ajudar você hoje?', 'bot', [
+                        { label: 'Calcular BTU', value: 'Calcular BTU' },
+                        { label: 'Solicitar Suporte', value: 'Solicitar Suporte' }
+                    ]);
+                }
+            });
+
+            chatbotSend.addEventListener('click', () => {
+                const input = chatbotInput.value.trim();
+                if (input) {
+                    handleChatbotInput(input);
+                    chatbotInput.value = '';
+                }
+            });
+
+            chatbotInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && chatbotInput.value.trim()) {
+                    handleChatbotInput(chatbotInput.value.trim());
+                    chatbotInput.value = '';
+                }
+            });
+
+            chatbotModal.addEventListener('click', (e) => {
+                if (e.target === chatbotModal) {
+                    chatbotModal.classList.remove('show');
+                }
             });
         });
     </script>
