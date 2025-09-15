@@ -177,6 +177,69 @@
             animation: gradientAnimation 8s ease infinite;
         }
 
+        /* === Formulário de Contato === */
+        .contact-form {
+            max-width: 600px;
+            width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            color: var(--text-color);
+        }
+        .contact-form h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .contact-form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 102, 0, 0.5);
+        }
+        .contact-form button {
+            background-color: var(--whatsapp-color);
+            color: var(--white);
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+            width: 100%;
+        }
+        .contact-form button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        .contact-form button:focus {
+            outline: 2px solid var(--white);
+            outline-offset: 2px;
+        }
+
         /* === Mapa === */
         .contact-content {
             display: flex;
@@ -329,6 +392,7 @@
             .contact-buttons { flex-direction: column; gap: 15px; }
             .map-section { max-width: 100%; padding: 0 10px; }
             .map-container { max-width: 100%; }
+            .contact-form { padding: 15px; }
             .floating-buttons { bottom: 15px; right: 15px; gap: 12px; }
         }
         @media (max-width: 480px) {
@@ -337,6 +401,7 @@
             .hero p { font-size: 0.9rem; }
             .contact h2 { font-size: 1.4rem; }
             .contact p { font-size: 1rem; }
+            .contact-form h3 { font-size: 1.3rem; }
             .floating-btn { width: 50px; height: 50px; font-size: 24px; }
         }
     </style>
@@ -373,6 +438,18 @@
         <section class="contact" id="contact" role="region" aria-labelledby="contact-title">
             <h2 id="contact-title" lang="pt-BR">Entre em Contato Conosco</h2>
             <p>Horário: Segunda a Sexta, 08:00 às 17:30</p>
+            <div class="contact-form" role="form" aria-labelledby="form-title">
+                <h3 id="form-title" lang="pt-BR">Envie sua Mensagem</h3>
+                <form id="whatsapp-form">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required aria-required="true" placeholder="Digite seu nome">
+                    <label for="phone">Telefone:</label>
+                    <input type="tel" id="phone" name="phone" required aria-required="true" placeholder="Digite seu telefone (com DDD)">
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" required aria-required="true" placeholder="Descreva sua solicitação"></textarea>
+                    <button type="submit" aria-label="Enviar mensagem via WhatsApp">Enviar via WhatsApp</button>
+                </form>
+            </div>
             <div class="contact-buttons">
                 <a href="https://wa.me/551630136700" target="_blank" class="whatsapp-btn" rel="noopener noreferrer" aria-label="Contate-nos pelo WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
                 <a href="https://www.instagram.com/alvaresarcondicionado?igsh=MWk2azJwcmJrYTRvZA==" target="_blank" class="instagram-btn" rel="noopener noreferrer" aria-label="Siga-nos no Instagram"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>
@@ -413,6 +490,7 @@
             const menuToggle = document.getElementById('menu-toggle');
             const nav = document.querySelector('nav');
             const floatingButtons = document.getElementById('floating-buttons');
+            const form = document.getElementById('whatsapp-form');
 
             menuToggle.addEventListener('click', () => {
                 const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
@@ -427,6 +505,24 @@
             window.addEventListener('scroll', () => {
                 const header = document.getElementById('header');
                 header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // Manipulação do formulário para WhatsApp
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const message = document.getElementById('message').value.trim();
+                
+                // Formatar a mensagem para o WhatsApp
+                const whatsappMessage = `Olá, meu nome é ${encodeURIComponent(name)}. Meu telefone é ${encodeURIComponent(phone)}. Mensagem: ${encodeURIComponent(message)}`;
+                const whatsappUrl = `https://wa.me/551630136700?text=${whatsappMessage}`;
+                
+                // Redirecionar para o WhatsApp
+                window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+                
+                // Opcional: Limpar o formulário após o envio
+                form.reset();
             });
         });
     </script>
